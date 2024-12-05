@@ -1,13 +1,25 @@
 "use client";
 
 import ProjectsState from "@/store/atoms/ProjectsState";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import ProjectTile from "./ProjectTile";
 import { Button } from "antd";
 import Link from "next/link";
+import { useEffect } from "react";
+import api from "@/lib/api";
 
 const Projects = () => {
-  const projects = useRecoilValue(ProjectsState);
+  const [projects, setProjects] = useRecoilState(ProjectsState);
+
+  useEffect(() => {
+    api.get("/projects").then((res) => {
+      console.log(res);
+      const projects = res.data.projects;
+      setProjects(projects);
+    }).catch((e)=> {
+      console.error(e);
+    });
+  }, []);
 
   return (
     <>

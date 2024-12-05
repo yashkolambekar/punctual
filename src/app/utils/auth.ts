@@ -18,8 +18,17 @@ const generateToken = async (body: any) => {
 }
 
 const verifyToken = async (token: string) => {
-  const verifiedToken = jwt.verify(token, process.env.JWT_SECRET as string, "HS256");
-  return verifiedToken.body;
+
+  if(token.startsWith("Bearer ")){
+    token = token.slice(7, token.length);
+  }
+
+  try {
+    const verifiedToken = jwt.verify(token, process.env.JWT_SECRET as string, "HS256");
+    return verifiedToken;
+  } catch (error) {
+    return null;
+  }
 }
 
 export { hashPassowrd, verifyPassword, generateToken, verifyToken };
