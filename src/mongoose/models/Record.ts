@@ -22,7 +22,7 @@ const RecordSchema = new mongoose.Schema({
     numericValue: {
         type: Number,
         required: false,
-    },
+    }
 });
 
 export default mongoose.models.Record || mongoose.model('Record', RecordSchema);

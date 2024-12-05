@@ -16,6 +16,10 @@ const ProjectSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
         required: true,
+    },
+    startTime: {
+        type: Date,
+        required: false,
     }
 });
 

@@ -5,7 +5,6 @@ import mongoose from "mongoose";
 import { NextRequest, NextResponse } from "next/server";
 
 const POST = async (req: NextRequest) => {
-
   const authHeader = req.headers.get("Authorization");
 
   if (!authHeader) {
@@ -67,21 +66,33 @@ const POST = async (req: NextRequest) => {
     );
   }
 
-  const startTime = new Date();
+  if(project.startTime){
+    return NextResponse.json(
+      {
+        message: "Project already started",
+      },
+      { status: 400 }
+    );
+  }
 
-  const record = new Record({
-    type: "time",
-    project: body.project,
-    startTime: startTime,
-  });
+  if(project.recordType !== "time"){
+    return NextResponse.json(
+      {
+        message: "Project is not a time project",
+      },
+      { status: 400 }
+    );
+  }
+
+  project.startTime = new Date();
 
   try {
-    await record.save();
+    await project.save();
   } catch (e) {
     console.error(e);
     return NextResponse.json(
       {
-        message: "Failed to create record",
+        message: "Failed to start project",
       },
       { status: 500 }
     );
@@ -89,7 +100,7 @@ const POST = async (req: NextRequest) => {
 
   return NextResponse.json({
     message: "Record created",
-    record: record,
+    project: project,
   });
 };
 

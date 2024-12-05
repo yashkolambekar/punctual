@@ -7,8 +7,9 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
 const TimeTile = ({ data }: { data: IProject }) => {
-  const [checked, setChecked] = useState(false);
-  const [startTime, setStartTime] = useState<Date | null>(null);
+  const [checked, setChecked] = useState(data.startTime ? true : false);
+  const [startTime, setStartTime] = useState<Date | null>(data.startTime || null);
+  const [loading, setLoading] = useState(false);
   const [time, setTime] = useState({
     h: 0,
     m: 0,
@@ -32,13 +33,20 @@ const TimeTile = ({ data }: { data: IProject }) => {
       }, 1000);
 
       return () => clearInterval(interval);
+    }else{
+      setTime({
+        h: 0,
+        m: 0,
+        s: 0,
+      });
     }
   }, [checked, startTime]);
 
-  const handleToggle = (checked: boolean) => {
+  const handleToggle = (localChecked: boolean) => {
+    setLoading(true);
     let url = null;
 
-    if (checked) {
+    if (localChecked) {
       url = "/records/time/on";
     } else {
       url = "/records/time/off";
@@ -47,23 +55,30 @@ const TimeTile = ({ data }: { data: IProject }) => {
     api
       .post(url, { project: data._id })
       .then((res) => {
-        setChecked(true);
+        if(localChecked) {
+          setStartTime(res.data.project.startTime);
+        }else{
+          setStartTime(null);
+        }
+        setChecked(localChecked);
         console.log(res.data);
-        setStartTime(res.data.record.startTime);
       })
       .catch((err) => {
         console.error(err);
         toast.error(err.response.data.message || err.emessage);
+      }).finally(() => {
+        setLoading(false);
       });
   };
 
   return (
     <>
-      <div className="flex flex-col gap-2 border border-solid border-black rounded-lg p-4">
+      <div className="flex flex-col gap-2 border-[1px] border-solid border-[rgba(0,0,0,0.2)] rounded-lg p-4">
         <div className="flex flex-col items-center">
           <div className="p-[1em]">
             <Switch
               value={checked}
+              loading={loading}
               onChange={handleToggle}
               className="scale-[1.5]"
             />

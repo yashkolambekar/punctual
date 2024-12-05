@@ -6,6 +6,7 @@ interface IProject {
     description: string;
     status: string;
     recordType: "number" | "time",
+    startTime?: Date | null;
 };
 
 const ProjectsState = atom({
