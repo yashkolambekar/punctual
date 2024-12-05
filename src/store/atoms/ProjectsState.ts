@@ -1,7 +1,7 @@
 import { atom } from "recoil";
 
 interface IProject {
-    id: number;
+    _id: number;
     name: string;
     description: string;
     status: string;
@@ -19,7 +19,7 @@ const ProjectsState = atom({
             recordType: "number",
         },
         {
-            id: 2,
+            _id: 2,
             name: "Mobile App Development",
             description: "Develop a mobile application for our services",
             status: "inactive",

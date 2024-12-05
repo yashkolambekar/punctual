@@ -1,4 +1,4 @@
-import User from "@/app/mongoose/models/User";
+import User from "@/mongoose/models/User";
 import { generateToken, verifyPassword } from "@/app/utils/auth";
 import { NextRequest, NextResponse } from "next/server";
 

@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import mongoose from "mongoose";
-import User from "@app/mongoose/models/User"; // Import the existing User model
+import User from "@/mongoose/models/User"; // Import the existing User model
 import { generateToken, hashPassowrd } from "@/app/utils/auth";
 
 const POST = async (req: NextRequest) => {

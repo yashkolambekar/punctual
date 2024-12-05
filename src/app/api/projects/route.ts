@@ -1,4 +1,4 @@
-import Project from "@/app/mongoose/models/Project";
+import Project from "@/mongoose/models/Project";
 import { verifyToken } from "@/app/utils/auth";
 import mongoose from "mongoose";
 import { NextRequest, NextResponse } from "next/server";
@@ -6,7 +6,6 @@ import { JwtBody } from "njwt";
 
 const POST = async (req: NextRequest) => {
   const authHeader = req.headers.get("Authorization");
-  console.log("Authorization header:", authHeader);
 
   if (!authHeader) {
     return NextResponse.json(
@@ -18,7 +17,6 @@ const POST = async (req: NextRequest) => {
   }
 
   const tokenVerification = await verifyToken(authHeader);
-  console.log("Token verification result:", tokenVerification);
 
   if (!tokenVerification) {
     return NextResponse.json(
