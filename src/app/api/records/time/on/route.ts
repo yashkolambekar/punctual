@@ -1,6 +1,5 @@
 import { verifyToken } from "@/app/utils/auth";
 import Project from "@/mongoose/models/Project";
-import Record from "@/mongoose/models/Record";
 import mongoose from "mongoose";
 import { NextRequest, NextResponse } from "next/server";
 
