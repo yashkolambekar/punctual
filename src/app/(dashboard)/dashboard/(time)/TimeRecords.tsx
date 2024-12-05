@@ -17,7 +17,7 @@ const TimeRecords = () => {
         <div className="flex flex-wrap gap-4">
           {projects.map((project) => {
             if (project.recordType == "time") {
-              return <TimeTile data={project} />;
+              return <TimeTile key={project._id} data={project} />;
             }
             return null;
           })}

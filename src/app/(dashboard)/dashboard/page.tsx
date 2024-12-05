@@ -1,3 +1,5 @@
+"use client";
+
 import Projects from "./(projects)/Projects";
 import TimeRecords from "./(time)/TimeRecords";
 

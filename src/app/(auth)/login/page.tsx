@@ -13,7 +13,9 @@ const LoginPage = () => {
         <Form layout="vertical" onFinish={(values) => {
           axios.post("/api/users/login", values).then((res) => {
             toast.success("Logged in successfully");
-            localStorage.setItem("token", res.data.token);
+            if(typeof window !== "undefined"){
+              localStorage.setItem("token", res.data.token);
+            }
             window.location.href = "/";
           }).catch((e) => {
             toast.error(e.response.data.message);

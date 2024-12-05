@@ -13,6 +13,7 @@ const POST = async (req: NextRequest) => {
   try {
     await mongoose.connect(process.env.MONGO_URI as string);
   } catch (e) {
+    console.error(e);
     return NextResponse.json(
       { message: "Error connecting to database" },
       { status: 500 }

@@ -1,7 +1,6 @@
 "use client";
 
 import { Button, Form, Input } from "antd";
-import Link from "next/link";
 
 const ForgotPasswordPage = () => {
   return (
@@ -11,8 +10,8 @@ const ForgotPasswordPage = () => {
       <div className="flex flex-col">
         <Form
           layout="vertical"
-          onFinish={(e) => {
-            alert("DOne");
+          onFinish={() => {
+            // pass
           }}
         >
           <Form.Item label="Email">

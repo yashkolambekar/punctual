@@ -1,9 +1,8 @@
 "use client";
 
 import ProjectsState from "@/store/atoms/ProjectsState";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 import ProjectTile from "./ProjectTile";
-import { Button } from "antd";
 import Link from "next/link";
 import { useEffect } from "react";
 import api from "@/lib/api";
@@ -19,7 +18,7 @@ const Projects = () => {
     }).catch((e)=> {
       console.error(e);
     });
-  }, []);
+  }, [setProjects]);
 
   return (
     <>
@@ -30,7 +29,7 @@ const Projects = () => {
         </div>
         <div className="flex flex-wrap gap-3">
           {projects.map((project) => (
-            <ProjectTile key={project.id} data={project} />
+            <ProjectTile key={project._id} data={project} />
           ))}
         </div>
       </div>

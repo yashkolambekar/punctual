@@ -1,7 +1,6 @@
+"use client";
+
 import Header from "@/components/Header";
-import { Menu } from "antd";
-import Sider from "antd/es/layout/Sider";
-import MenuElement from "./Menu";
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   return (

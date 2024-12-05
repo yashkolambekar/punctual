@@ -7,11 +7,17 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
-
+import { useEffect } from 'react';
 
 const NewProject = () => {
-
     const router = useRouter();
+
+    useEffect(() => {
+        if (typeof localStorage === 'undefined') {
+            // Handle the case where localStorage is not available
+            console.error("localStorage is not available");
+        }
+    }, []);
 
     const projectRecordTypes = [
         {
@@ -38,7 +44,7 @@ const NewProject = () => {
                         return;
                     }
 
-                    api.post("/projects", values).then((res) => {
+                    api.post("/projects", values).then(() => {
                         toast.success("Project created successfully");
                         router.push("/dashboard");
                     }).catch((e) => {

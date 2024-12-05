@@ -1,4 +1,3 @@
-
 const path = require('path');
 
 module.exports = {
@@ -6,5 +5,4 @@ module.exports = {
     config.resolve.alias['@app'] = path.resolve(__dirname, 'src/app');
     return config;
   },
-  // ...existing code...
 };

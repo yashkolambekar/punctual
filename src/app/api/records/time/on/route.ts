@@ -1,7 +1,6 @@
 import { verifyToken } from "@/app/utils/auth";
 import Project from "@/mongoose/models/Project";
 import Record from "@/mongoose/models/Record";
-import { message } from "antd";
 import mongoose from "mongoose";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -31,6 +30,7 @@ const POST = async (req: NextRequest) => {
   try {
     await mongoose.connect(process.env.MONGO_URI as string);
   } catch (e) {
+    console.error(e);
     return NextResponse.json(
       { message: "Error connecting to database" },
       { status: 500 }

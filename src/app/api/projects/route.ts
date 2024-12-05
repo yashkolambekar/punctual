@@ -2,7 +2,6 @@ import Project from "@/mongoose/models/Project";
 import { verifyToken } from "@/app/utils/auth";
 import mongoose from "mongoose";
 import { NextRequest, NextResponse } from "next/server";
-import { JwtBody } from "njwt";
 
 const POST = async (req: NextRequest) => {
   const authHeader = req.headers.get("Authorization");
@@ -30,6 +29,7 @@ const POST = async (req: NextRequest) => {
   try {
     await mongoose.connect(process.env.MONGO_URI as string);
   } catch (e) {
+    console.error(e);
     return NextResponse.json(
       { message: "Error connecting to database" },
       { status: 500 }
@@ -106,6 +106,7 @@ const GET = async (req: NextRequest) => {
   try {
     await mongoose.connect(process.env.MONGO_URI as string);
   } catch (e) {
+    console.error(e);
     return NextResponse.json(
       { message: "Error connecting to database" },
       { status: 500 }
