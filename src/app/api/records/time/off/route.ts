@@ -66,6 +66,16 @@ const POST = async (req: NextRequest) => {
     );
   }
 
+  if(!project.startTime) {
+    return NextResponse.json(
+      {
+        message: "Project was already off",
+        turnOff: true
+      },
+      { status: 400 }
+    );
+  }
+
   const record = new Record({
     type: "time",
     project: project._id,

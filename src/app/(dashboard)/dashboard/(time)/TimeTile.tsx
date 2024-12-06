@@ -64,6 +64,13 @@ const TimeTile = ({ data }: { data: IProject }) => {
         console.log(res.data);
       })
       .catch((err) => {
+        if(err.response.data.turnOff) {
+          setChecked(false);
+          setStartTime(null);
+        }else if (err.response.data.turnOn) {
+          setChecked(true);
+          
+        }
         console.error(err);
         toast.error(err.response.data.message || err.emessage);
       }).finally(() => {

@@ -1,5 +1,6 @@
 import { verifyToken } from "@/app/utils/auth";
 import Project from "@/mongoose/models/Project";
+
 import mongoose from "mongoose";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -69,6 +70,7 @@ const POST = async (req: NextRequest) => {
     return NextResponse.json(
       {
         message: "Project already started",
+        turnOn: true,
       },
       { status: 400 }
     );
