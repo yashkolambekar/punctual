@@ -11,7 +11,6 @@ const RegisterPage = () => {
       <p className="text-[1.5em] font-semibold">Register</p>
       <div className="flex flex-col">
         <Form layout="vertical" onFinish={(values) => {
-          console.log(values);
           axios.post("/api/users", values).then((res) => {
             toast.success("Registered successfully");
             if(typeof window !== "undefined"){

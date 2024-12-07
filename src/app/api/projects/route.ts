@@ -52,8 +52,6 @@ const POST = async (req: NextRequest) => {
     owner: tokenVerification.body.id,
   });
 
-  console.log(project);
-
   try {
     await project.save();
   } catch (e) {
@@ -120,8 +118,6 @@ const GET = async (req: NextRequest) => {
   } catch (e) {
     console.error(e);
   }
-
-  console.log(projects);
 
   return NextResponse.json({
     projects,

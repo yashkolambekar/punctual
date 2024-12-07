@@ -12,7 +12,6 @@ const Projects = () => {
 
   useEffect(() => {
     api.get("/projects").then((res) => {
-      console.log(res);
       const projects = res.data.projects;
       setProjects(projects);
     }).catch((e)=> {

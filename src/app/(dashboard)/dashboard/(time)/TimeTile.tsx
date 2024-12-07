@@ -17,7 +17,6 @@ const TimeTile = ({ data }: { data: IProject }) => {
   });
 
   useEffect(() => {
-    console.log("checked:", checked, "startTime:", startTime);
     if(checked && startTime) {
       const interval = setInterval(() => {
         const now = new Date();
@@ -61,7 +60,6 @@ const TimeTile = ({ data }: { data: IProject }) => {
           setStartTime(null);
         }
         setChecked(localChecked);
-        console.log(res.data);
       })
       .catch((err) => {
         if(err.response.data.turnOff) {

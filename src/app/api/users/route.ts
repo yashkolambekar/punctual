@@ -30,7 +30,6 @@ const POST = async (req: NextRequest) => {
   try {
     await userItem.save();
   } catch (e) {
-    console.log(e);
     return NextResponse.json({ message: "Error saving user" }, { status: 500 });
   }
 

@@ -1,8 +1,19 @@
 "use client";
 
 import Header from "@/components/Header";
+import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
+
+  const router = useRouter()
+
+  if(!localStorage.getItem("token")){
+    toast.error("Please login or register");
+    router.push("/login");
+  }
+
+
   return (
     <>
       <div className="w-full min-h-[100dvh] flex flex-col items-center">
