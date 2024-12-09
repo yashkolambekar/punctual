@@ -20,6 +20,10 @@ const ProjectSchema = new mongoose.Schema({
     startTime: {
         type: Date,
         required: false,
+    },
+    numericValue: {
+        type: Number,
+        required: false,
     }
 });
 

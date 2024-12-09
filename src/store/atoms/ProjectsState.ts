@@ -5,8 +5,9 @@ interface IProject {
     name: string;
     description: string;
     status: string;
-    recordType: "number" | "time",
+    recordType: "number" | "time";
     startTime?: Date | null;
+    numericValue?: number | null;
 };
 
 const ProjectsState = atom({
