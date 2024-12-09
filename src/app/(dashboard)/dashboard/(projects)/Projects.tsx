@@ -4,7 +4,7 @@ import ProjectsState from "@/store/atoms/ProjectsState";
 import { useRecoilState, useRecoilValue } from "recoil";
 import ProjectTile from "./ProjectTile";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect} from "react";
 import api from "@/lib/api";
 import UpdateProjectsState from "@/store/atoms/UpdateProjectsState";
 

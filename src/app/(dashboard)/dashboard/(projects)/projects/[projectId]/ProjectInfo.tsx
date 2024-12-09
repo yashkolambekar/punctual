@@ -17,7 +17,7 @@ const ProjectInfo = ({projectId} : {projectId: string}) => {
             console.error(e);
             toast.error("Failed to get project info");
         })
-    }, []);
+    }, [projectId]);
 
 
     return (

@@ -4,7 +4,6 @@ import api from "@/lib/api";
 import { IProject } from "@/store/atoms/ProjectsState";
 import UpdateProjectsState from "@/store/atoms/UpdateProjectsState";
 import { Switch } from "antd";
-import { set } from "mongoose";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useSetRecoilState } from "recoil";

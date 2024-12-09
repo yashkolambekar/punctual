@@ -111,7 +111,7 @@ const GET = async (req: NextRequest) => {
     );
   }
 
-  let projectId = false || req.nextUrl.searchParams.get("id");
+  const projectId = false || req.nextUrl.searchParams.get("id");
 
   console.log("project id is", projectId)
 

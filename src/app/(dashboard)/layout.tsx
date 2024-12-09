@@ -8,7 +8,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
 
   const router = useRouter()
 
-  if(!localStorage.getItem("token")){
+  if(typeof window !== "undefined" && !localStorage.getItem("token")){
     toast.error("Please login or register");
     router.push("/login");
   }
