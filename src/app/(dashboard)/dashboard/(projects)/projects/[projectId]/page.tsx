@@ -1,6 +1,8 @@
-import api from "@/lib/api";
-import toast from "react-hot-toast";
+import Link from "next/link";
 import ProjectInfo from "./ProjectInfo";
+import arrowIcon from "@/assets/back-svgrepo-com.svg";
+import Image from "next/image";
+import BackToDashboard from "@/components/BackToDashboard";
 
 const ProjectId = async ({params}: {params: Promise<{projectId: string}>}) => {
     
@@ -9,8 +11,8 @@ const ProjectId = async ({params}: {params: Promise<{projectId: string}>}) => {
     return(
         <>  
         <div className="h-6 w-full">
-
         </div>
+            <BackToDashboard />
             <ProjectInfo projectId={projectId} />
         </>
     )

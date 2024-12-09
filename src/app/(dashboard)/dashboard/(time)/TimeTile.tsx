@@ -78,7 +78,7 @@ const TimeTile = ({ data }: { data: IProject }) => {
 
   return (
     <>
-      <div className="flex flex-col gap-2 border-[1px] border-solid border-[rgba(0,0,0,0.2)] rounded-lg p-4">
+      <div className="flex flex-col gap-2 border-[1px] border-solid border-[rgba(0,0,0,0.2)] rounded-lg p-4 w-full max-w-[10em] items-center text-center">
         <div className="flex flex-col items-center">
           <div className="p-[1em]">
             <Switch
@@ -88,14 +88,14 @@ const TimeTile = ({ data }: { data: IProject }) => {
               className="scale-[1.5]"
             />
           </div>
-          <div>
+          <div className="">
             <p className="text-[1.1em] m-0 font-semibold">
                 {String(time.h).padStart(2, '0')}:{String(time.m).padStart(2, '0')}:{String(time.s).padStart(2, '0')}
             </p>
           </div>
         </div>
-        <div>
-          <p className="m-0">{data.name}</p>
+        <div className="flex flex-col items-center justify-center h-full">
+          <p className="m-0 text-[0.9em]">{data.name}</p>
         </div>
       </div>
     </>

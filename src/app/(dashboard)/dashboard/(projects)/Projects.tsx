@@ -26,7 +26,7 @@ const Projects = () => {
         <p className="text-[1.2em] font-semibold w-fit m-0">Projects</p>
         <Link href={"/new/project"} className="text-[0.8em]">Add new</Link>
         </div>
-        <div className="flex flex-wrap gap-3">
+        <div className="flex flex-wrap gap-4">
           {projects.map((project) => (
             <ProjectTile key={project._id} data={project} />
           ))}
