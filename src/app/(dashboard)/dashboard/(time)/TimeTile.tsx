@@ -2,14 +2,18 @@
 
 import api from "@/lib/api";
 import { IProject } from "@/store/atoms/ProjectsState";
+import UpdateProjectsState from "@/store/atoms/UpdateProjectsState";
 import { Switch } from "antd";
+import { set } from "mongoose";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { useSetRecoilState } from "recoil";
 
 const TimeTile = ({ data }: { data: IProject }) => {
   const [checked, setChecked] = useState(data.startTime ? true : false);
   const [startTime, setStartTime] = useState<Date | null>(data.startTime || null);
   const [loading, setLoading] = useState(false);
+  const setUpdateProjectsState = useSetRecoilState(UpdateProjectsState);
   const [time, setTime] = useState({
     h: 0,
     m: 0,
@@ -73,6 +77,7 @@ const TimeTile = ({ data }: { data: IProject }) => {
         toast.error(err.response.data.message || err.emessage);
       }).finally(() => {
         setLoading(false);
+        setUpdateProjectsState((prev) => prev + 1);
       });
   };
 

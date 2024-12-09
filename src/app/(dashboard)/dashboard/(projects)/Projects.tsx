@@ -1,14 +1,16 @@
 "use client";
 
 import ProjectsState from "@/store/atoms/ProjectsState";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import ProjectTile from "./ProjectTile";
 import Link from "next/link";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import api from "@/lib/api";
+import UpdateProjectsState from "@/store/atoms/UpdateProjectsState";
 
 const Projects = () => {
   const [projects, setProjects] = useRecoilState(ProjectsState);
+  const updateProjects = useRecoilValue(UpdateProjectsState);
 
   useEffect(() => {
     api.get("/projects").then((res) => {
@@ -17,7 +19,7 @@ const Projects = () => {
     }).catch((e)=> {
       console.error(e);
     });
-  }, [setProjects]);
+  }, [setProjects, updateProjects]);
 
   return (
     <>
