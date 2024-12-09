@@ -19,7 +19,8 @@
     "react-dom": "^18",
     "react-hot-toast": "^2.4.1",
     "recharts": "^2.14.1",
-    "recoil": "^0.7.7"
+    "recoil": "^0.7.7",
+    "timeago-react": "^3.0.6"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",

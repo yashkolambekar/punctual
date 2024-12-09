@@ -24,6 +24,10 @@ const ProjectSchema = new mongoose.Schema({
     numericValue: {
         type: Number,
         required: false,
+    },
+    lastUpdate : {
+        type: Date,
+        required: false,
     }
 });
 

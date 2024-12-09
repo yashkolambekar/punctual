@@ -22,6 +22,10 @@ const RecordSchema = new mongoose.Schema({
     numericValue: {
         type: Number,
         required: false,
+    },
+    createdAt : {
+        type: Date,
+        required: false
     }
 });
 
