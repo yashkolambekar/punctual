@@ -1,5 +1,13 @@
 import mongoose from "mongoose";    
 
+interface IProject {
+    name: string,
+    description: string | null,
+    recordType: string,
+    owner: string,
+    startTime: Date | null
+}
+
 const ProjectSchema = new mongoose.Schema({
     name: {
         type: String,

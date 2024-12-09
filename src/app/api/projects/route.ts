@@ -111,17 +111,41 @@ const GET = async (req: NextRequest) => {
     );
   }
 
-  let projects = null;
+  let projectId = false || req.nextUrl.searchParams.get("id");
 
-  try {
-    projects = await Project.find({ owner: tokenVerification.body.id });
-  } catch (e) {
-    console.error(e);
+  console.log("project id is", projectId)
+
+  if (projectId) {
+    let project = null;
+    try {
+      project = await Project.findOne({
+        owner: tokenVerification.body.id,
+        _id: projectId
+      });
+    } catch (e) {
+      console.error(e);
+      return NextResponse.json(
+        { message: "Project not found" },
+        { status: 404 }
+      );
+    }
+    return NextResponse.json({
+      project,
+    });
+
+  } else {
+    let projects = null;
+
+    try {
+      projects = await Project.find({ owner: tokenVerification.body.id });
+    } catch (e) {
+      console.error(e);
+    }
+
+    return NextResponse.json({
+      projects,
+    });
   }
-
-  return NextResponse.json({
-    projects,
-  });
 };
 
 export { POST, GET };
