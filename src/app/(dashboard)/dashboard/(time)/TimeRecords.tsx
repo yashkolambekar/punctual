@@ -2,7 +2,7 @@
 
 import ProjectsState from "@/store/atoms/ProjectsState";
 import { useRecoilValue } from "recoil";
-import TimeTile from "./TimeTile";
+import TimeTile from "./TimeTile/TimeTile";
 
 const TimeRecords = () => {
   const projects = useRecoilValue(ProjectsState);
