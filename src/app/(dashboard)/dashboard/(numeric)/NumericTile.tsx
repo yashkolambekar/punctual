@@ -60,7 +60,7 @@ const NumericTile = ({ data }: { data: IProject }) => {
         >
           {valueNotChanged ? (
             latestUpdate ? (
-              <TimeAgo datetime={latestUpdate} locale="en_US" />
+              <TimeAgo live={false} datetime={latestUpdate} locale="en_US" />
             ) : (
               "Last Value"
             )
