@@ -1,14 +1,12 @@
 "use client";
 
 import api from "@/lib/api";
-import { IProject } from "@/store/atoms/ProjectsState";
-import UpdateProjectsState from "@/store/atoms/UpdateProjectsState";
 import { Switch } from "antd";
 import { FullscreenExitOutlined, FullscreenOutlined } from "@ant-design/icons";
 import { useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
-import { useSetRecoilState } from "recoil";
 import StayAwakeVideo from "./StayAwakeVideo";
+import useProjectStore, { IProject } from "@/store/projects";
 
 const TimeTile = ({ data }: { data: IProject }) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -19,7 +17,7 @@ const TimeTile = ({ data }: { data: IProject }) => {
     data.startTime || null
   );
   const [loading, setLoading] = useState(false);
-  const setUpdateProjectsState = useSetRecoilState(UpdateProjectsState);
+  const fetchProjects = useProjectStore((state) => state.fetchProjects);
   const [time, setTime] = useState({
     h: 0,
     m: 0,
@@ -105,7 +103,7 @@ const TimeTile = ({ data }: { data: IProject }) => {
       })
       .finally(() => {
         setLoading(false);
-        setUpdateProjectsState((prev) => prev + 1);
+        fetchProjects();
       });
   };
 

@@ -1,4 +1,4 @@
-import { IProject } from "@/store/atoms/ProjectsState";
+import { IProject } from "@/store/projects";
 import eyeIcon from "@/assets/eye-svgrepo-com.svg";
 import Image from "next/image";
 import Link from "next/link";

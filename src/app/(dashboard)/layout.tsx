@@ -8,9 +8,7 @@ import toast from "react-hot-toast";
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
 
-  const projects = useProjectStore((state) => state.projects);
   const fetchProjects = useProjectStore((state) => state.fetchProjects);
-
   
   const router = useRouter()
   
@@ -21,7 +19,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   
   useEffect(() => {
     fetchProjects();
-  }, []);
+  }, [fetchProjects]);
 
   
   return (

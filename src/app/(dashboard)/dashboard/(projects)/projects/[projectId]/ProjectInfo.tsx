@@ -1,7 +1,7 @@
 "use client";
 
 import api from "@/lib/api";
-import { IProject } from "@/store/atoms/ProjectsState";
+import { IProject } from "@/store/projects";
 import { Radio } from "antd";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
