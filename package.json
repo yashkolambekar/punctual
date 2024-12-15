@@ -20,8 +20,8 @@
     "react-full-screen": "^1.1.1",
     "react-hot-toast": "^2.4.1",
     "recharts": "^2.14.1",
-    "recoil": "^0.7.7",
-    "timeago-react": "^3.0.6"
+    "timeago-react": "^3.0.6",
+    "zustand": "^5.0.2"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",

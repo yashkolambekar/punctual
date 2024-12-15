@@ -1,11 +1,11 @@
 "use client";
 
-import ProjectsState from "@/store/atoms/ProjectsState";
-import { useRecoilValue } from "recoil";
 import NumericTile from "./NumericTile";
+import useProjectStore from "@/store/projects";
 
 const NumericRecords = () => {
-  const projects = useRecoilValue(ProjectsState);
+  
+  const projects = useProjectStore((state) => state.projects);
 
   const projectsArray = projects.map((project) => {
     if (project.recordType == "numeric") {

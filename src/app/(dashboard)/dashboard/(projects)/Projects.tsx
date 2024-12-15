@@ -1,13 +1,12 @@
 "use client";
 
-import ProjectsState from "@/store/atoms/ProjectsState";
-import { useRecoilValue } from "recoil";
 import ProjectTile from "./ProjectTile";
 import Link from "next/link";
+import useProjectStore from "@/store/projects";
 
 const Projects = () => {
   
-  const projects = useRecoilValue(ProjectsState);
+  const projects = useProjectStore((state) => state.projects);
 
   return (
     <>

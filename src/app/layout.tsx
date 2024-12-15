@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import RecoilContext from "@/lib/RecoilContext";
 import ToastProvider from "@/lib/ToastProvider";
 import { ConfigProvider } from "antd";
 
@@ -22,14 +21,12 @@ export default function RootLayout({
       
       }
     }}>
-      <RecoilContext>
         <html lang="en">
           <body>
             <ToastProvider />
             {children}
           </body>
         </html>
-      </RecoilContext>
     </ConfigProvider>
   );
 }

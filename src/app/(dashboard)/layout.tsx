@@ -1,21 +1,29 @@
 "use client";
 
 import Header from "@/components/Header";
+import useProjectStore from "@/store/projects";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 import toast from "react-hot-toast";
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
 
-  const router = useRouter()
+  const projects = useProjectStore((state) => state.projects);
+  const fetchProjects = useProjectStore((state) => state.fetchProjects);
 
+  
+  const router = useRouter()
+  
   if(typeof window !== "undefined" && !localStorage.getItem("token")){
     toast.error("Please login or register");
     router.push("/login");
   }
+  
+  useEffect(() => {
+    fetchProjects();
+  }, []);
 
   
-
-
   return (
     <>
       <div className="w-full min-h-[100dvh] flex flex-col items-center">

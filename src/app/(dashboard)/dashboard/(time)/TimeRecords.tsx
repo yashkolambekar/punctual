@@ -1,11 +1,12 @@
 "use client";
 
-import ProjectsState from "@/store/atoms/ProjectsState";
-import { useRecoilValue } from "recoil";
 import TimeTile from "./TimeTile/TimeTile";
+import useProjectStore from "@/store/projects";
 
 const TimeRecords = () => {
-  const projects = useRecoilValue(ProjectsState);
+  
+  const projects = useProjectStore((state) => state.projects);
+
   return (
     <>
       <div className="px-4">
