@@ -55,6 +55,7 @@ const ProjectInfo = ({ projectId }: { projectId: string }) => {
         <div className="flex-shrink-0">
             <Radio.Group 
             options={options}
+            defaultValue={"year"}
             optionType="button"
             />
         </div>
